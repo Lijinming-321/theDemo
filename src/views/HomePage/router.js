@@ -5,6 +5,6 @@ export default [
         component: () => import("@/views/HomePage/index.vue"),
         meta: {
             title: "首页"
-        }
+        },
     }
 ]

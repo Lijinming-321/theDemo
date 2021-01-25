@@ -1,17 +1,44 @@
 <template>
   <div id="app">
     <!-- <router-link to="/home">Home</router-link> -->
-    <!-- <Demo></Demo> -->
-    <router-view />
+    <Home v-if="showPage"></Home>
+    <Login v-if="!showPage"></Login>
+    <!-- <router-link to="/home">H1页面</router-link>
+    <router-link to="/roles">H2页面</router-link> -->
+    <!-- <router-view /> -->
   </div>
 </template>
 
 <script>
-// import Demo from "@/components/demo.vue";
+import Home from "@/views/HomePage/index.vue";
+import Login from "@/views/LoginPage/index.vue";
+import { mapState, mapMutations } from "vuex";
 export default {
   name: "App",
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState({
+      showPage: (state) => state.HomeModule.showPage,
+    }),
+  },
   components: {
-    // Demo,
+    Home,
+    Login,
+  },
+  mounted() {
+    console.log(this.showPage, localStorage.getItem("loginFlag"));
+    let flag = localStorage.getItem("loginFlag")
+      ? Boolean(localStorage.getItem("loginFlag"))
+      : this.showPage;
+    this.changeShowPage(flag);
+    flag ? this.$router.push("/roles") : this.$router.push("/login");
+  },
+  methods: {
+    ...mapMutations({
+      changeShowPage: "HomeModule/changeShowPage",
+    }),
   },
 };
 </script>

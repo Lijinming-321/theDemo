@@ -1,49 +1,44 @@
 <template>
   <div class="m_left_menu">
-    <a-menu
-      style="width: 256px; height: 100%"
-      :default-selected-keys="['1']"
-      :open-keys.sync="openKeys"
-      mode="inline"
-      @click="handleClick"
+    <el-menu
+      class="el-menu-vertical-demo"
+      @open="handleOpen"
+      @close="handleClose"
+      @select="handleSelect"
+      :collapse="isCollapse"
+      background-color="#545c64"
+      text-color="#fff"
+      active-text-color="#ffd04b"
     >
-      <a-sub-menu key="sub1" @titleClick="titleClick">
-        <span slot="title"
-          ><a-icon type="mail" /><span>Navigation One</span></span
-        >
-        <a-menu-item-group key="g1">
-          <template slot="title">
-            <a-icon type="qq" /><span>Item 1</span>
-          </template>
-          <a-menu-item key="1"> Option 1 </a-menu-item>
-          <a-menu-item key="2"> Option 2 </a-menu-item>
-        </a-menu-item-group>
-        <a-menu-item-group key="g2" title="Item 2">
-          <a-menu-item key="3"> Option 3 </a-menu-item>
-          <a-menu-item key="4"> Option 4 </a-menu-item>
-        </a-menu-item-group>
-      </a-sub-menu>
-      <a-sub-menu key="sub2" @titleClick="titleClick">
-        <span slot="title"
-          ><a-icon type="appstore" /><span>Navigation Two</span></span
-        >
-        <a-menu-item key="5"> Option 5 </a-menu-item>
-        <a-menu-item key="6"> Option 6 </a-menu-item>
-        <a-sub-menu key="sub3" title="Submenu">
-          <a-menu-item key="7"> Option 7 </a-menu-item>
-          <a-menu-item key="8"> Option 8 </a-menu-item>
-        </a-sub-menu>
-      </a-sub-menu>
-      <a-sub-menu key="sub4">
-        <span slot="title"
-          ><a-icon type="setting" /><span>Navigation Three</span></span
-        >
-        <a-menu-item key="9"> Option 9 </a-menu-item>
-        <a-menu-item key="10"> Option 10 </a-menu-item>
-        <a-menu-item key="11"> Option 11 </a-menu-item>
-        <a-menu-item key="12"> Option 12 </a-menu-item>
-      </a-sub-menu>
-    </a-menu>
+      <el-submenu index="1">
+        <template slot="title">
+          <i class="el-icon-location"></i>
+          <span slot="title">Echarts学习</span>
+        </template>
+        <el-menu-item index="echarts/mapStudy">地图</el-menu-item>
+        <el-menu-item index="echarts/pieStudy">pie</el-menu-item>
+        <!-- <el-submenu index="1-4">
+          <span slot="title">选项4</span>
+          <el-menu-item index="1-4-1">选项1</el-menu-item>
+        </el-submenu> -->
+      </el-submenu>
+      <el-menu-item index="2">
+        <i class="el-icon-menu"></i>
+        <span slot="title">导航二</span>
+      </el-menu-item>
+      <el-menu-item index="3" disabled>
+        <i class="el-icon-document"></i>
+        <span slot="title">导航三</span>
+      </el-menu-item>
+      <el-menu-item index="4">
+        <i class="el-icon-setting"></i>
+        <span slot="title">导航四</span>
+      </el-menu-item>
+    </el-menu>
+    <!-- <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
+          <el-radio-button :label="false">展开</el-radio-button>
+          <el-radio-button :label="true">收起</el-radio-button>
+        </el-radio-group> -->
   </div>
 </template>
 <script>
@@ -51,29 +46,34 @@ export default {
   name: "LeftMenu",
   data() {
     return {
-      current: ["mail"],
-      openKeys: ["sub1"],
+      isCollapse: false,
     };
   },
-  watch: {
-    openKeys(val) {
-      console.log("openKeys", val);
-    },
-  },
+  watch: {},
   methods: {
-    handleClick(e) {
-      console.log("click", e);
-      this.$emit("toWhere", "aaa");
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
     },
-    titleClick(e) {
-      console.log("titleClick", e);
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleSelect(key, keyPath) {
+      console.log("选中的是：", key, keyPath);
+      this.$router.push("/" + keyPath[1]);
     },
   },
 };
 </script>
 <style lang="less" scoped>
 .m_left_menu {
-  //   min-height: ~"calc(100% - 50px)";
   height: 100%;
+  .el-menu {
+    height: 100%;
+    text-align: left;
+  }
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 255px;
+  }
+  //   border-bottom: 1px solid #d9d9d9;
 }
 </style>

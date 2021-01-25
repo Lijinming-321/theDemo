@@ -1,5 +1,5 @@
 <template>
-  <div class="m_top_menu"></div>
+  <div class="m_top_menu">前端小Demo</div>
 </template>
 <script>
 export default {
@@ -20,7 +20,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .m_top_menu {
-  height: 50px;
+  height: 59px;
   border-bottom: 1px solid #d9d9d9;
 }
 </style>
