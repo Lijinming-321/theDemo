@@ -84,7 +84,6 @@ export default {
     }
 
     .m_login_page_right_content {
-      min-height: ~"calc(100% - 50px)";
       padding: 70% 20% 20% 20%;
       /* background-color: gray; */
 
