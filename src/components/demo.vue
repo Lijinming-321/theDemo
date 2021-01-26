@@ -35,5 +35,8 @@ export default {
   .el-header {
     padding: 0;
   }
+  .el-main {
+    background-color: #eef2f8;
+  }
 }
 </style>
