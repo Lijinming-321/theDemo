@@ -78,7 +78,7 @@ export default {
     // 拖拽类型：重排resort/替换replace
     type: {
       type: String,
-      default: "resort",
+      default: "replace",
     },
   },
   data: function () {
