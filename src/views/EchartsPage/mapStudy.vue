@@ -1,81 +1,115 @@
-<template >
-  <div>
-    <div class="m_search_div">
-      <el-form :inline="true" :model="formInline" class="demo-form-inline">
-        <el-form-item label="审批人">
-          <el-input v-model="formInline.user" placeholder="审批人"></el-input>
-        </el-form-item>
-        <el-form-item label="活动区域">
-          <el-select v-model="formInline.region" placeholder="活动区域">
-            <el-option label="区域一" value="shanghai"></el-option>
-            <el-option label="区域二" value="beijing"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="审批人">
-          <el-input v-model="formInline.user" placeholder="审批人"></el-input>
-        </el-form-item>
-        <el-form-item label="活动区域">
-          <el-select v-model="formInline.region" placeholder="活动区域">
-            <el-option label="区域一" value="shanghai"></el-option>
-            <el-option label="区域二" value="beijing"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="审批人">
-          <el-input v-model="formInline.user" placeholder="审批人"></el-input>
-        </el-form-item>
-        <el-form-item label="活动区域">
-          <el-select v-model="formInline.region" placeholder="活动区域">
-            <el-option label="区域一" value="shanghai"></el-option>
-            <el-option label="区域二" value="beijing"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="审批人">
-          <el-input v-model="formInline.user" placeholder="审批人"></el-input>
-        </el-form-item>
-        <el-form-item label="活动区域">
-          <el-select v-model="formInline.region" placeholder="活动区域">
-            <el-option label="区域一" value="shanghai"></el-option>
-            <el-option label="区域二" value="beijing"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" @click="onSubmit">查询</el-button>
-        </el-form-item>
-      </el-form>
-    </div>
-    <!-- <a-button type="primary" @click="fnGoHome"> 首页 </a-button> -->
-  </div>
+<template>
+  <GridGroup
+    :column="3"
+    :drag-data-list="dragDataList"
+    @drag-start="dragStart"
+    @drag-end="dragEnd"
+    @changeData="fnChangeData"
+  >
+    <template v-slot:default="dragData"
+      ><div class="drag-data-divddd">
+        这是{{ dragData.data.title }}数据
+      </div></template
+    >
+  </GridGroup>
 </template>
 <script>
-// import { Button } from 'ant-design-vmapStudyue';
+import GridGroup from "@/components/GridGroup.vue";
 export default {
-  name: "mapStudy",
-  data() {
+  data: function () {
     return {
-      formInline: {
-        user: "",
-        region: "",
-      },
+      aaa: true,
+      dragDataList: [
+        {
+          startX: 3,
+          endX: 4,
+          startY: 1,
+          endY: 2,
+          title: "2",
+        },
+        {
+          startX: 1,
+          endX: 2,
+          startY: 1,
+          endY: 2,
+          title: "1",
+        },
+        {
+          startX: 2,
+          endX: 4,
+          startY: 2,
+          endY: 3,
+          title: "3",
+        },
+        {
+          startX: 1,
+          endX: 4,
+          startY: 3,
+          endY: 4,
+          title: "4",
+        },
+        {
+          startX: 3,
+          endX: 4,
+          startY: 4,
+          endY: 5,
+          title: "5",
+        },
+        {
+          startX: 3,
+          endX: 4,
+          startY: 6,
+          endY: 7,
+          title: "6",
+        },
+      ],
     };
   },
   methods: {
-    onSubmit() {
-      console.log("submit!");
+    dragStart: function (event) {
+      this.$message({
+        type: "info",
+        message: `拖拽开始，通过console可以查看event参数, ${JSON.stringify(
+          event
+        )}`,
+      });
+      console.info("拖拽开始", event);
     },
+    dragEnd: function (event, dragList) {
+      this.$message({
+        type: "info",
+        message: `拖拽结束，通过console可以查看event参数, ${JSON.stringify(
+          event
+        )}, ${dragList}`,
+      });
+      console.info("拖拽结束", event, dragList);
+    },
+    fnChangeData(val) {
+      console.log("回到了父亲", val);
+      console.log(val[0]);
+      console.log(val[1]);
+      console.log(val[2]);
+      console.log(val[3]);
+      console.log(val[4]);
+      // this.$nextTick(() => {
+      //   this.dragDataList = val;
+      // });
+      this.dragDataList = JSON.parse(JSON.stringify(val));
+      console.log("***", this.dragDataList);
+    },
+  },
+  components: {
+    GridGroup,
   },
 };
 </script>
-<style lang="less" scoped>
-.m_search_div {
-  width: 100%;
-  background-color: white;
-  display: flex;
+<style scoped>
+.drag-data-divddd {
+  background-color: green;
+  color: #ffffff;
+  /* width: 100px; */
+  min-width: 100px;
   height: 100px;
-  align-items: center;
-  padding: 0 20px;
-  border-radius: 8px;
-  .el-form-item {
-    margin-bottom: 0;
-  }
+  line-height: 100px;
 }
 </style>
