@@ -4,6 +4,11 @@ import HomeRouter from "@/views/HomePage/router.js";
 import LoginRouter from "@/views/LoginPage/router.js";
 import OverviewRouter from "@/views/OverviewPage/router.js";
 import EchartsRouter from "@/views/EchartsPage/router.js";
+import EasyRouter from "@/views/EasyPage/router.js";
+import CanvasRouter from "@/views/CanvasPage/router.js";
+import LineRouter from "@/views/LinePage/router.js";
+import OrderRouter from "@/views/OrderPage/router.js"
+import SvgRouter from "@/views/SvgPage/router.js"
 Vue.use(VueRouter)
 
 const routes = [{
@@ -12,7 +17,12 @@ const routes = [{
 ...HomeRouter,
 ...LoginRouter,
 ...OverviewRouter,
-...EchartsRouter
+...EchartsRouter,
+...EasyRouter,
+...CanvasRouter,
+...LineRouter,
+...OrderRouter,
+...SvgRouter
 ]
 
 
