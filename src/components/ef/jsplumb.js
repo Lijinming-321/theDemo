@@ -4844,6 +4844,7 @@
              manually, since this method attaches event listeners and an id.
              */
             _newEndpoint = function (params, id) {
+                debugger;
                 var endpointFunc = _currentInstance.Defaults.EndpointType || jsPlumb.Endpoint;
                 var _p = jsPlumb.extend({}, params);
                 //delete _p.label; // not supported by endpoint.
@@ -4855,6 +4856,7 @@
                 _p.fireDetachEvent = fireDetachEvent;
                 _p.elementId = id || _getId(_p.source);
                 var ep = new endpointFunc(_p);
+                console.log('hhhhhh')
                 ep.id = "ep_" + _idstamp();
                 _manage(_p.elementId, _p.source);
 
@@ -5039,6 +5041,7 @@
 
 
         this.addEndpoint = function (el, params, referenceParams) {
+            debugger
             referenceParams = referenceParams || {};
             var p = jsPlumb.extend({}, referenceParams);
             jsPlumb.extend(p, params);
@@ -15362,6 +15365,7 @@
                     this._initDraggableIfNecessary(info.el, true, options, info.id, true);
                 }
             }.bind(this));
+            console.log(this)
             return this;
         },
         snapToGrid: function (el, x, y) {

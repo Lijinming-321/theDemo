@@ -27,6 +27,7 @@
         <el-menu-item index="canvasPage">canvas画图</el-menu-item>
         <el-menu-item index="linePage">leader-line画线</el-menu-item>
         <el-menu-item index="svgLine">svg画线</el-menu-item>
+        <el-menu-item index="jsplumbPage">jsPlumb绘制</el-menu-item>
         <!-- <el-menu-item index="echarts/pieStudy">pie</el-menu-item> -->
       </el-submenu>
       <el-submenu index="3">

@@ -8,7 +8,8 @@ import EasyRouter from "@/views/EasyPage/router.js";
 import CanvasRouter from "@/views/CanvasPage/router.js";
 import LineRouter from "@/views/LinePage/router.js";
 import OrderRouter from "@/views/OrderPage/router.js"
-import SvgRouter from "@/views/SvgPage/router.js"
+import SvgRouter from "@/views/SvgPage/router.js";
+import JsPlumbRouter from "@/views/JsPlumbPage/router.js"
 Vue.use(VueRouter)
 
 const routes = [{
@@ -22,7 +23,8 @@ const routes = [{
 ...CanvasRouter,
 ...LineRouter,
 ...OrderRouter,
-...SvgRouter
+...SvgRouter,
+...JsPlumbRouter
 ]
 
 
