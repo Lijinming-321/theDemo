@@ -4844,7 +4844,7 @@
              manually, since this method attaches event listeners and an id.
              */
             _newEndpoint = function (params, id) {
-                debugger;
+                // debugger;
                 var endpointFunc = _currentInstance.Defaults.EndpointType || jsPlumb.Endpoint;
                 var _p = jsPlumb.extend({}, params);
                 //delete _p.label; // not supported by endpoint.
